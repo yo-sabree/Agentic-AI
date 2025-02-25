@@ -3,6 +3,7 @@ import json
 from pytrends.request import TrendReq
 import requests
 from bs4 import BeautifulSoup
+import feedparser
 
 def get_seo_keywords(topic):
     """Fetch related keywords using Google Suggest API."""
@@ -13,13 +14,13 @@ def get_seo_keywords(topic):
         return suggestions[:20]
     return []
 
+
 def get_trending_keywords():
-    """Fetch top trending Google search keywords."""
-    url = "https://trends.google.com/trends/trendingsearches/daily?geo=IN"
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, "html.parser")
-    trends = soup.select(".title > .details > .title-container > a")
-    return [trend.text for trend in trends[:10]]
+    url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=IN"
+    feed = feedparser.parse(url)
+    return [entry["title"] for entry in feed.entries]
+
+
+
 
 
