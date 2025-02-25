@@ -1,9 +1,9 @@
 import streamlit as st
 from seo_model import get_seo_keywords, get_trending_keywords
 from llm import generate_content
-from image import generate_image
 from humanize import hum
 import re
+import pyttsx3
 
 
 def clean_markdown(text):
@@ -14,10 +14,12 @@ def clean_markdown(text):
     return text.strip()
 
 
-st.title("Digital Marketing LLM")
-generate_img = st.checkbox("Generate AI Image")
+st.set_page_config(page_title="Digital Marketing LLM", layout="wide")
+st.title("Digital Marketing Content Generator")
 
-inp = st.text_input("Enter the Title: ")
+st.sidebar.header("Options")
+generate_img = st.sidebar.checkbox("Generate AI Image")
+inp = st.text_input("Enter the Title:")
 
 if inp:
     key = get_seo_keywords(inp)
@@ -25,16 +27,24 @@ if inp:
     out = generate_content(inp, key, trend)
     clean = clean_markdown(out)
 
-    with st.spinner("Humanizing content..."):
-        humanized_content = hum(clean)
+    if 'humanized_content' not in st.session_state or st.session_state.input_title != inp:
+        with st.spinner("Humanizing content..."):
+            st.session_state.humanized_content = hum(clean)
+            st.session_state.input_title = inp
 
     st.subheader("Humanized Content")
-    st.write(humanized_content)
+    st.text_area("", st.session_state.humanized_content, height=300)
 
-    if generate_img:
-        st.subheader("Image")
-        image = generate_image(inp)
-        if image:
-            st.image(image, caption=f"{inp}")
-        else:
-            st.error("Could not generate an image.")
+    tts_engine = pyttsx3.init()
+    tts_engine.setProperty('rate', 190)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("▶ Start Speech"):
+            tts_engine.say(st.session_state.humanized_content)
+            tts_engine.runAndWait()
+
+    with col2:
+        if st.button("⏹ Stop Speech"):
+            tts_engine.stop()
