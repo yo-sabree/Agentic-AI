@@ -32,7 +32,7 @@ The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered to
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/yo-sabree/Agentic-AI.git
-   cd digital-marketing-generator
+   cd Agenti- AI
    ```
 2. **Install dependencies:**
    ```bash
@@ -40,7 +40,7 @@ The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered to
    ```
 3. **Run the Streamlit app:**
    ```bash
-   streamlit run app.py
+   streamlit run main.py
    ```
 
 ## How to Use
