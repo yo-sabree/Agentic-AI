@@ -1,6 +1,8 @@
 # Digital Marketing Content Generator
 
-![Architecture](https://github.com/user-attachments/assets/5787e3c3-4cf8-4585-9213-94a98d9b5429)
+## Design
+![Architecture](https://github.com/user-attachments/assets/0d537034-94b1-4909-a769-3eaf3540603e)
+
 
 
 ## Overview
