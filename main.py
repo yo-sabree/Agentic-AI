@@ -31,6 +31,9 @@ st.sidebar.header("Options")
 generate_img = st.sidebar.checkbox("Generate AI Image")
 inp = st.text_input("Enter the Title:")
 
+tts_engine = pyttsx3.init()
+tts_engine.setProperty('rate', 190)
+
 if inp:
     key = get_seo_keywords(inp)
     trend = get_trending_keywords()
@@ -43,22 +46,21 @@ if inp:
             st.session_state.input_title = inp
 
     st.subheader("Humanized Content")
-    st.text_area("", st.session_state.humanized_content, height=300)
+    humanized_text = st.text_area("", st.session_state.humanized_content, height=300)
 
     summary = summarize_text(st.session_state.humanized_content)
     st.subheader("Content Summary")
-    st.write(summary)
-
-    tts_engine = pyttsx3.init()
-    tts_engine.setProperty('rate', 190)
+    summarized_text = st.text_area("", summary, height=300)
 
     col1, col2 = st.columns(2)
-
     with col1:
-        if st.button("▶ Start Speech"):
-            tts_engine.say(st.session_state.humanized_content)
+        if st.button("Start Speech (Humanized)"):
+            tts_engine.say(humanized_text)
+            tts_engine.runAndWait()
+        if st.button("Start Speech (Summary)"):
+            tts_engine.say(summarized_text)
             tts_engine.runAndWait()
 
     with col2:
-        if st.button("⏹ Stop Speech"):
+        if st.button("Stop Speech"):
             tts_engine.stop()
