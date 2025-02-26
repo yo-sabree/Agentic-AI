@@ -4,6 +4,9 @@ from llm import generate_content
 from humanize import hum
 import re
 import pyttsx3
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
 
 
 def clean_markdown(text):
@@ -12,6 +15,13 @@ def clean_markdown(text):
     text = re.sub(r'[-]{3,}', '', text)
     text = re.sub(r'\n{2,}', '\n\n', text)
     return text.strip()
+
+
+def summarize_text(text, sentences=3):
+    parser = PlaintextParser.from_string(text, Tokenizer("english"))
+    summarizer = LsaSummarizer()
+    summary = summarizer(parser.document, sentences)
+    return " ".join(str(sentence) for sentence in summary)
 
 
 st.set_page_config(page_title="Digital Marketing LLM", layout="wide")
@@ -34,6 +44,10 @@ if inp:
 
     st.subheader("Humanized Content")
     st.text_area("", st.session_state.humanized_content, height=300)
+
+    summary = summarize_text(st.session_state.humanized_content)
+    st.subheader("Content Summary")
+    st.write(summary)
 
     tts_engine = pyttsx3.init()
     tts_engine.setProperty('rate', 190)
