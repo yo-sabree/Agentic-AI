@@ -1,20 +1,20 @@
-# 📢 Digital Marketing Content Generator
+# Digital Marketing Content Generator
 
 ![Architecture](https://github.com/user-attachments/assets/5787e3c3-4cf8-4585-9213-94a98d9b5429)
 
 
-## 🚀 Overview
+## Overview
 
 The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered tool** designed to streamline content creation for digital marketing. It takes a user-provided title, generates SEO-optimized content, enhances readability through humanization, provides a summary, and even offers a text-to-speech option.
 
-## 🌟 Key Features
+## Key Features
 
-- 🔍 **SEO Keyword Integration**: Fetches trending and relevant keywords to optimize content.
-- 🤖 **AI-Powered Content Generation**: Uses an advanced language model (LLM) to generate well-structured content.
-- 📝 **Humanization**: Improves readability and ensures the text feels more natural.
-- 📑 **Summarization**: Extracts the key points for a quick and effective overview.
-- 🔊 **Text-to-Speech (TTS)**: Reads the content aloud for accessibility and convenience.
-- 🎨 **Optional AI Image Generation**: Enhances content with AI-generated visuals.
+- **SEO Keyword Integration**: Fetches trending and relevant keywords to optimize content.
+- **AI-Powered Content Generation**: Uses an advanced language model (LLM) to generate well-structured content.
+- **Humanization**: Improves readability and ensures the text feels more natural.
+- **Summarization**: Extracts the key points for a quick and effective overview.
+- **Text-to-Speech (TTS)**: Reads the content aloud for accessibility and convenience.
+- **Optional AI Image Generation**: Enhances content with AI-generated visuals.
 
 ## 🏗️ Tech Stack
 
@@ -25,11 +25,11 @@ The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered to
 - **pyttsx3** (for text-to-speech functionality)
 - **LLM API** (for AI-based content generation)
 
-## 📥 Installation Guide
+## Installation Guide
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-repo/digital-marketing-generator.git
+   git clone https://github.com/yo-sabree/Agentic-AI.git
    cd digital-marketing-generator
    ```
 2. **Install dependencies:**
@@ -41,7 +41,7 @@ The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered to
    streamlit run app.py
    ```
 
-## 🎯 How to Use
+## How to Use
 
 1. **Enter a title** in the input field.
 2. The app will fetch **SEO and trending keywords** related to your topic.
@@ -57,10 +57,5 @@ The **Digital Marketing Content Generator** is a **Streamlit-based AI-powered to
 - 📂 **Export Options** to save content as PDF or Word documents.
 - 🔎 **Advanced Summarization Techniques** for more refined summaries.
 
-## 📜 License
 
-This project is **open-source** and available under the **MIT License**.
-
----
-💡 *Contributions are welcome! Help improve this project by submitting suggestions or enhancements.*
 
